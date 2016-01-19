@@ -1,9 +1,9 @@
 
 <?php
-$servername = "localhost";
-$username = "banana";
-$password = "banana";
-$dbname = "lamp";
+$servername = "127.0.0.1";
+$username = "moviesusers";
+$password = "bacon";
+$dbname = "movies";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -33,9 +33,9 @@ $result = $conn->query($sql);
 				while($row = $result->fetch_assoc()) {
 					?>
 			<h1><?=$row['title']?></h1>
-            <p>Comedy movie rated <?php?></p>
-            <p>Released on <?php?></p>
-            <p>This movie sold <?php?> tickets, earning gross revenues of $<?php?></p>
+            <p>Comedy movie rated <?=$row['rating']?></p>
+            <p>Released on <?=$row['released']?></p>
+            <p>This movie sold <?=$row['tickets']?> tickets, earning gross revenues of $<?=$row['gross']?></p>
             <p>
 
             <h2>Rotten Tomatoes Rating</h2>
@@ -45,6 +45,8 @@ $result = $conn->query($sql);
             <p>
                 Damon Wayans, Jr. and Jake Johnson have comedic chemistry; unfortunately, Let's Be Cops fails to do anything with it.            </p>
 					<?php
+                    //6b628559
+                    //http://img.omdbapi.com/?i=tt2294629&tomatoes=true
 				}
 			}
 			?>

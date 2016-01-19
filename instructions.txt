@@ -1,0 +1,32 @@
+load data local infile '~/Desktop/LAMP-Challenge/movies-2014.csv'
+into table main
+fields terminated by ','
+optionally enclosed by '"'
+ignore 1 lines;
+
+drop database movies;
+
+create database movies character set='UTF8';
+
+create user moviesusers@localhost identified by 'bacon';
+grant select on movies.* to moviesusers@localhost;
+
+use movies;
+
+drop table if exists main;
+
+create table main (
+    title varchar(64),    
+    released varchar(32),
+    distributor varchar(64),
+    genre varchar(32),
+	rating varchar(8),
+	gross Integer,
+	tickets Integer,
+	imdb_id varchar(50),
+    id serial not null primary key
+
+);
+
+select * from main;
+drop user moviesusers@localhost;
